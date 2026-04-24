@@ -1,13 +1,9 @@
-import { useRef, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
-import { gsap } from '@/lib/gsap';
 import airpods2 from '@/public/images/products/airpods2.png';
 import airpods3 from '@/public/images/products/airpods3.png';
 import airpodsPro from '@/public/images/products/airpods-pro.png';
 import airpodsMax from '@/public/images/products/airpods-max.png';
 import noice from "@/public/images/products/noice.png";
-import nonnoice from '@/public/images/products/no-noice.png';
 
 
 type ProductItem = {
@@ -53,12 +49,10 @@ const features: (string | StaticImageData)[][] = [
 
 
 export default function AirpodsComparation() {
-  const sectionRef = useRef<HTMLDivElement>(null);
     
   return (
     <section
       id="comparation-section"
-      ref={sectionRef}
       className="h-screen bg-[#f8f8f8] text-black flex items-center justify-center"
     >
       <div className="text-gray-900 min-h-screen">

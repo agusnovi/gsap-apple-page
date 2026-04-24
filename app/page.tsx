@@ -1,4 +1,3 @@
-'use client'
 import Airpods3rd from "@/components/airpods/airpods-3rd";
 import AipodsMax from "@/components/airpods/airpods-max";
 import AirpodsComparation from "@/components/airpods/airpods-comparation";
