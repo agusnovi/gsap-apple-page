@@ -3,13 +3,10 @@
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// // ScrollSmoother requires ScrollTrigger
-// import { ScrollSmoother } from 'gsap/ScrollSmoother';
-// import { TextPlugin } from 'gsap/TextPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(useGSAP);
 }
 
-export { useGSAP, gsap };
+export { useGSAP, gsap, ScrollTrigger };

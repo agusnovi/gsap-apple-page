@@ -1,157 +1,167 @@
-'use client'
-import { useEffect, useRef } from 'react';
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "@/lib/gsap";
 import Image from "next/image";
-import { gsap } from '@/lib/gsap';
-import airpods from '@/public/images/banners/airpods-3rd.png';
+import Link from "next/link";
+import airpods from "@/public/images/banners/airpods-3rd.png";
 
 export default function Airpods3rd() {
-      const sectionRef = useRef<HTMLDivElement>(null);
-      const playedRef = useRef(false);
-      const readyForNextRef = useRef(false);
+  // initial DOM area gsap will doing
+  const sectionRef = useRef<HTMLDivElement>(null);
+  // as a flag that animation completed runing
+  const playedRef = useRef(false);
+  // as a flag to move next section
+  const readyForNextRef = useRef(false);
 
-      useEffect(() => {
-        const elements = sectionRef.current;
-        const nextSection = document.getElementById('next-section');
+  useEffect(() => {
+    const elements = sectionRef.current;
+    const nextSection = document.getElementById('next-section');
 
-        if (!elements) return;
+    if (!elements) return;
 
-        const tl = gsap.timeline({ paused: true });
-        gsap.set('.airpods-img', {
-          transformOrigin: 'center center',
-          scale: 0.98,
-        });
+    // initial timeline animation, starting with pause state
+    const tl = gsap.timeline({ paused: true });
 
-        tl.to('.airpods-img', {
-          scaleX: 2.45,
-          scaleY: 2.35,
-          y: 20,
-          duration: 1,
-          ease: 'power4.out',
-        });
+    // inital first condition for hero image
+    gsap.set('.airpods-img', {
+      transformOrigin: 'center center',
+      scale: 0.98,
+    });
 
-        tl.to(
-          '.airpods-title',
-          {
-            scale: 0.8,
-            y: -30,
-            duration: 1,
-            ease: 'power4.out',
-          },
-          '<0.02',
-        );
+    // scale image
+    tl.to('.airpods-img', {
+      scaleX: 2.45,
+      scaleY: 2.35,
+      y: 20,
+      duration: 1,
+    });
 
-        const triggerIntro = () => {
-          if (playedRef.current) return;
-          playedRef.current = true;
+    // scale title
+    tl.to(
+      '.airpods-title',
+      {
+        scale: 0.9,
+        y: -30,
+        duration: 1,
+      },
+      '<0.02', // starting time animation same as before
+    );
 
-          document.body.style.overflow = 'hidden';
+    tl.to(
+      '.airpods-description',
+      {
+        scale: 1.1,
+        y: -30,
+        duration: 1,
+      },
+      '<0.02',
+    );
 
-          tl.play();
-          removeIntroListeners();
-        };
+    tl.to(
+      '.airpods-actions',
+      {
+        y: -30,
+        duration: 1,
+      },
+      '<0.02',
+    );
 
-        tl.eventCallback('onComplete', () => {
-          document.body.style.overflow = 'auto';
+    // check to triger animation only once
+    const triggerIntro = () => {
+      if (playedRef.current) return;
+      playedRef.current = true;
 
-          readyForNextRef.current = true;
-        });
+      document.body.style.overflow = 'hidden'; // lock scroll when animation running
 
-        const goNext = () => {
-          if (!readyForNextRef.current) return;
+      tl.play();
+      removeIntroListeners();
+    };
 
-          nextSection?.scrollIntoView({
-            behavior: 'smooth',
-          });
+    // open scroll function when animation ended
+    tl.eventCallback('onComplete', () => {
+      document.body.style.overflow = 'auto'; // unlock scroll
 
-          removeNextListeners();
-        };
+      readyForNextRef.current = true;
+    });
 
-        const onWheelIntro = (e: WheelEvent) => {
-          if (Math.abs(e.deltaY) > 2) triggerIntro();
-        };
+    // moving to the next section DOM
+    const goNext = () => {
+      if (!readyForNextRef.current) return;
 
-        const onWheelNext = (e: WheelEvent) => {
-          if (Math.abs(e.deltaY) > 2) goNext();
-        };
+      nextSection?.scrollIntoView({
+        behavior: 'smooth',
+      });
 
-        let touchStartY = 0;
+      removeNextListeners();
+    };
 
-        const onTouchStart = (e: TouchEvent) => {
-          touchStartY = e.touches[0].clientY;
-        };
+    // detection scroll event
+    const onWheelIntro = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > 2) triggerIntro();
+    };
 
-        const onTouchMoveIntro = (e: TouchEvent) => {
-          const delta = touchStartY - e.touches[0].clientY;
-          if (Math.abs(delta) > 5) triggerIntro();
-        };
+    // detection scroll event
+    const onWheelNext = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > 2) goNext();
+    };
 
-        const onTouchMoveNext = (e: TouchEvent) => {
-          const delta = touchStartY - e.touches[0].clientY;
-          if (Math.abs(delta) > 5) goNext();
-        };
-          
-        const removeIntroListeners = () => {
-          elements.removeEventListener('wheel', onWheelIntro);
-          elements.removeEventListener('touchstart', onTouchStart);
-          elements.removeEventListener('touchmove', onTouchMoveIntro);
+    const removeIntroListeners = () => {
+      elements.removeEventListener('wheel', onWheelIntro);
 
-          window.addEventListener('wheel', onWheelNext, { passive: true });
-          window.addEventListener('touchstart', onTouchStart, {
-            passive: true,
-          });
-          window.addEventListener('touchmove', onTouchMoveNext, {
-            passive: true,
-          });
-        };
+      window.addEventListener('wheel', onWheelNext, { passive: true });
+    };
 
-        const removeNextListeners = () => {
-          window.removeEventListener('wheel', onWheelNext);
-          window.removeEventListener('touchstart', onTouchStart);
-          window.removeEventListener('touchmove', onTouchMoveNext);
-        };
+    const removeNextListeners = () => {
+      window.removeEventListener('wheel', onWheelNext);
+    };
 
-        elements.addEventListener('wheel', onWheelIntro, { passive: true });
-        elements.addEventListener('touchstart', onTouchStart, {
-          passive: true,
-        });
-        elements.addEventListener('touchmove', onTouchMoveIntro, {
-          passive: true,
-        });
+    elements.addEventListener('wheel', onWheelIntro, { passive: true }); // blocked preventdefault
 
-        return () => {
-          removeIntroListeners();
-          removeNextListeners();
-          tl.kill();
-          document.body.style.overflow = 'auto';
-        };
-      }, []);
-    
-    return (
-      <section
-        ref={sectionRef}
-        className="h-screen bg-[#f8f8f8] overflow-hidden"
-      >
-        <div className="relative w-full h-full flex items-center justify-center">
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <Image
-              src={airpods}
-              alt="airpods"
-              priority
-              className="airpods-img w-[65vw] max-w-none object-contain will-change-transform"
-            />
-          </div>
-          <div className="relative z-10 flex flex-col items-center text-center">
-            <h1 className="airpods-title text-[72px] md:text-[110px] lg:text-[140px] font-bold text-[#1d1d1f]">
-              AirPods
-            </h1>
-            <p className="mt-2 text-[22px] font-semibold text-[#1d1d1f]">
-              3rd generation
-            </p>
-            <p className="text-[22px] font-semibold text-[#1d1d1f]">
-              From $199.000.00*
-            </p>
+    return () => {
+      removeIntroListeners();
+      removeNextListeners();
+      tl.kill();
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="h-screen bg-[#f8f8f8] overflow-hidden">
+      <div className="relative w-full h-full flex items-center justify-center">
+        <div className="absolute inset-0 z-1 ml-[-50px] mt-[250px] flex items-center justify-center pointer-events-none">
+          <Image
+            src={airpods}
+            alt="airpods"
+            priority
+            className="airpods-img w-[55vw] max-w-none object-contain will-change-transform"
+          />
+        </div>
+        <div className="relative z-0 flex mt-[300px] ml-[-100px] flex-col items-center text-center">
+          <h1 className="airpods-title text-[72px] md:text-[10px] lg:text-[120px] font-bold text-[#1d1d1f]">
+            AirPods
+          </h1>
+          <p className="airpods-description mt-2 text-[22px] font-semibold text-[#1d1d1f]">
+            3rd generation
+          </p>
+          <p className="airpods-description text-[22px] font-semibold text-[#1d1d1f]">
+            From &#8377;19900.00*
+          </p>
+          <div className="airpods-actions flex mt-[100px] items-center gap-6">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white w-[78px] h-[48px] text-[18px] rounded-full transition">
+              Buy
+            </button>
+
+            <Link
+              href="#"
+              className="text-blue-600 text-[18px] flex items-center gap-1 hover:underline"
+            >
+              Learn more
+              <span className="text-lg">›</span>
+            </Link>
           </div>
         </div>
-      </section>
-    );
+      </div>
+    </section>
+  );
 }
