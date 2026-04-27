@@ -1,0 +1,63 @@
+[
+  {
+    "image": {
+      "src": "/apple-logo.png",
+      "alt": "logo"
+    },
+    "href": "/"
+  },
+  {
+    "label": "Store",
+    "href": "/store"
+  },
+  {
+    "label": "Mac",
+    "href": "/mac"
+  },
+  {
+    "label": "iPad",
+    "href": "/ipad"
+  },
+  {
+    "label": "iPhone",
+    "href": "/iphone"
+  },
+  {
+    "label": "Watch",
+    "href": "/watch"
+  },
+  {
+    "label": "AirPods",
+    "href": "/airpods"
+  },
+  {
+    "label": "Tv & Home",
+    "href": "/tv"
+  },
+  {
+    "label": "Entertainment",
+    "href": "/entertainment"
+  },
+  {
+    "label": "Accessories",
+    "href": "/accessories"
+  },
+  {
+    "label": "Support",
+    "href": "/support"
+  },
+  {
+    "image": {
+      "src": "/search-icon.png",
+      "alt": "search"
+    },
+    "href": "/search"
+  },
+  {
+    "image": {
+      "src": "/bag-icon.png",
+      "alt": "cart"
+    },
+    "href": "/cart"
+  }
+]

@@ -1,0 +1,65 @@
+[
+    {
+    "label": "AirPods",
+    "type": "2nd Generation",
+    "image": {
+        "src": "/airpods-2nd.png",
+        "alt": "airpods-2nd",
+        "width": 32,
+        "height": 54
+    },
+    "href": "/airpods/2nd"
+    },
+    {
+    "label": "AirPods",
+    "type": "3nd Generation",
+    "image": {
+      "src": "/airpods-3rd.png",
+      "alt": "airpods-3rd",
+      "width": 34,
+      "height": 54
+    },
+    "href": "/airpods/3nd"
+    },
+    {
+    "label": "AirPods Pro",
+    "type": "2nd Generation",
+    "image": {
+      "src": "/airpods-pro-2nd.png",
+      "alt": "airpods-pro-2nd",
+      "width": 39,
+      "height": 54
+    },
+    "href": "/airpods/2ndpro"
+    },
+    {
+    "label": "AirPods Max",
+    "image": {
+        "src": "/airpods-max.png",
+        "alt": "airpods-max",
+        "width": 34,
+        "height": 54
+    },
+    "href": "/airpods/airpodsmax"
+    },
+    {
+    "label": "Compare",
+    "image": {
+      "src": "/compare.png",
+      "alt": "compare",
+      "width": 45,
+      "height": 54
+    },
+    "href": "/airpods/compare"
+    },
+    {
+    "label": "Apple Music",
+    "image": {
+      "src": "/apple-music.png",
+      "alt": "apple-music",
+      "width": 32,
+      "height": 54
+    },
+    "href": "/airpods/applemusic"
+    }
+]
