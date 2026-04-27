@@ -1,20 +1,16 @@
 import { use } from 'react';
 import { getChapterNav } from '@/actions/airpods';
-import Airpods3rd from '@/components/airpods/banners/airpods-3rd';
-import AirpodsComparation from '@/components/airpods/airpods-comparation';
-import AipodsMax from '@/components/airpods/airpods-max';
 import ChapterNav from '@/components/airpods/chapter-nav';
+import AirpodsContent from '@/components/airpods/airpods-content';
 
 export default function AirpodsPage() {
   const chapterNav = use(getChapterNav());
 
   return (
     <>
-      <ChapterNav data={chapterNav}/>
+      <ChapterNav data={chapterNav} />
       <main>
-        <Airpods3rd />
-        {/*<AipodsMax />
-        <AirpodsComparation />*/}
+        <AirpodsContent />
       </main>
     </>
   );

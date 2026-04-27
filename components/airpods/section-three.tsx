@@ -2,16 +2,9 @@ import Image, { StaticImageData } from 'next/image';
 import airpods2 from '@/public/images/products/airpods2.png';
 import airpods3 from '@/public/images/products/airpods3.png';
 import airpodsPro from '@/public/images/products/airpods-pro.png';
-import airpodsMax from '@/public/images/products/airpods-max.png';
-import noice from "@/public/images/products/noice.png";
-
-
-type ProductItem = {
-  name: string;
-  gen: string;
-  price: string;
-  img: StaticImageData;
-};
+import noice from '@/public/images/products/noice.png';
+import airpodsMax from '@/public/images/banners/airpods-max.png';
+import { ProductItem } from '@/lib/types/entities/airpods';
 
 const products: ProductItem[] = [
   {
@@ -47,16 +40,13 @@ const features: (string | StaticImageData)[][] = [
   [noice, 'Personalised Spatial Audio with dynamic head tracking'],
 ];
 
-
-export default function AirpodsComparation() {
-    
+export default function SectionThree() {
   return (
     <section
       id="comparation-section"
       className="h-screen bg-[#f8f8f8] text-black flex items-center justify-center"
     >
-      <div className="text-gray-900 min-h-screen">
-        {/* Title */}
+      <div className="s3-item text-gray-900 min-h-screen">
         <section className="text-center py-16">
           <h1 className="text-4xl md:text-5xl font-semibold">
             Which AirPods are <br className="hidden md:block" /> right for you?

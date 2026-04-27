@@ -11,29 +11,3 @@ export default function Header() {
     </header>
   );
 }
-
-/*async function getStaticProps() {
-  let data: NavItems[] = []
-  const controller = new AbortController();
-  const timeout = setTimeout(
-    () => controller.abort,
-    +(process.env.TIMEOUT ?? TIMEOUT_DEFAULT),
-  );
-
-  try {
-    const response = await fetch('menus', {
-      signal: controller.signal,
-    });
-    data = await response.json();
-  } catch (e) {
-    data = DEFAULT_MENU;
-  } finally {
-    clearTimeout(timeout);
-  }
-
-  return {
-    props: {
-      menus: data,
-    }
-  }
-}*/
