@@ -39,8 +39,8 @@ export default function AirpodsContent() {
 
       s2.fromTo(
         q('.airpods-max-img'),
-        { scale: 0.8, y: 100 },
-        { scale: 1.4, y: -120, duration: 1 },
+        { scale: 1, y: 0 },
+        { scale: 1.4, y: -420, duration: 1 },
       );
 
       s2.fromTo(
@@ -72,7 +72,7 @@ export default function AirpodsContent() {
         },
       });
 
-      el.addEventListener('wheel', handler, { passive: false });
+      el.addEventListener('wheel', handler); // not calling preventdefault/ avoid browser behavior
 
       return () => {
         el.removeEventListener('wheel', handler);

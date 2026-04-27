@@ -43,7 +43,6 @@ const features: (string | StaticImageData)[][] = [
 export default function SectionThree() {
   return (
     <section
-      id="comparation-section"
       className="h-screen bg-[#f8f8f8] text-black flex items-center justify-center"
     >
       <div className="s3-item text-gray-900 min-h-screen">

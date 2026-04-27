@@ -5,7 +5,6 @@ import airpodsMax from '@/public/images/banners/airpods-max.png';
 export default function SectionTwo() {
   return (
     <section
-      id="next-section"
       className="h-screen bg-white text-black flex items-center justify-center"
     >
       <div className="relative w-full h-full flex items-center justify-center">
@@ -22,7 +21,7 @@ export default function SectionTwo() {
             AirPods Max
           </h1>
           <p className="airpods-description text-[22px] mt-[-30px] text-[#1d1d1f]">
-            &#8377;19900.00*
+            &#8377;59900.00*
           </p>
           <div className="airpods-max-actions flex mt-[170px] items-center gap-6">
             <button className="bg-blue-600 hover:bg-blue-700 text-white w-[78px] h-[48px] text-[18px] rounded-full transition">
