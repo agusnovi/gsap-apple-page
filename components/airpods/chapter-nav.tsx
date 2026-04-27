@@ -8,8 +8,6 @@ import { ChapterNavItem } from '@/lib/types/entities/chapter-nav';
 export default function ChapterNav({ data }: { data: ChapterNavItem[] }) {
   const scope = useRef<HTMLElement | null>(null);
 
-  if (data.length === 0) return null;
-
   useGSAP(
     () => {
       gsap.from('.items', {
@@ -21,6 +19,8 @@ export default function ChapterNav({ data }: { data: ChapterNavItem[] }) {
     },
     { scope },
   );
+
+  if (data.length === 0) return null;
 
   return (
     <nav
